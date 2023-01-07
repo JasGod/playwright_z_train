@@ -1,7 +1,7 @@
 {
   "valid_product": "T-shirt",
-  "quantité": "5",
-  "article": "div:nth-child(2) > .style_card_body__QuFGN > span > .style_card_body_img__mkV1D",
+  "quantité": "3",
+  "article": "div:nth-child(1) > .style_card_body__QuFGN > span > .style_card_body_img__mkV1D",
   "produitsupp": "phone",
-  "nom": "shirt"
+  "nom": "Ampoule"
 }

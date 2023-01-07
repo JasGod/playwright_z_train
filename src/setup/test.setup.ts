@@ -36,19 +36,23 @@ Before(async function (this: OurWorld) {
   
   this.context = await global.browser.newContext({
     recordVideo: {
-      dir: "videos_records/",
+      dir: "videos/",
       size: { width: 800, height: 600 },
     },
     
   });
   this.page = await this.context.newPage();
+  await this.context.tracing.start({ screenshots: true, snapshots: true });
 });
 // Cleanup after each scenario
 After(async function (this: OurWorld, testCase:any) {
   if (testCase.result.status === Status.FAILED) {
+    let random = Math.random()*10;
+    await this.context.tracing.stop({ path: `./test-results/test-trace${random}.zip` });
     var stream = await this.page.screenshot();
-    return this.attach(stream, 'image/png');
+    this.attach(stream, 'image/png');
   }
+
   await this.page.close();
   await this.context.close();
 });

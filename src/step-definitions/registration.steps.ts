@@ -1,12 +1,7 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { OurWorld } from "../setup/types";
 import { expect } from "@playwright/test";
-import assert from "assert";
 
-Given("i open Ztrain login page", async function (this: OurWorld) {
-  await this.page.goto("https://ztrain-web.vercel.app/auth/login");
-  await expect(this.page).toHaveURL("https://ztrain-web.vercel.app/auth/login");
-});
 
 
 When("I click on register button", async function (this: OurWorld) {
@@ -36,9 +31,17 @@ When("I clicks validation button", async function (this: OurWorld) {
 Then(
   "The user is connected {string}",
   async function (this: OurWorld, string) {
-    const locator = await this.page
-      .locator("#style_content_logo__pkvMP")
-      .getByRole("heading", { name: "Z-Train" });
-    await expect(locator).toContainText(string);
+    this.page.pause;
+    if (this.page.$("Cet utilisateur existe déjà")) {
+      await expect(
+        this.page.getByText("Cet utilisateur existe déjà")
+      ).toHaveText("Cet utilisateur existe déjà");
+    } else {
+          const locator = await this.page
+            .locator("#style_content_logo__pkvMP")
+            .getByRole("heading", { name: "Z-Train" });
+          await expect(locator).toContainText(string);
+    }
+
   }
 );

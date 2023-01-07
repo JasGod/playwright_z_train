@@ -6,8 +6,8 @@ Feature: Product detail page
 
 
   @pdt01
-  Scenario: pdt01 - Add a product to my bag
+  Scenario: Add a product to my bag
     Given I am connected to my account "ubogni@gmail.com" and "Ulrich77"
-    When I select one of the items
-    And I added to my bag
+    When I select one item
+    And I added quantity to item and valided
     Then I can see the product in my bag

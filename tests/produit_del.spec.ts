@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import data from "./datas/connection_data.json";
 import product_data from "./datas/product_data.json";
 
-test.beforeEach(async ({ page }) => {
+/* test.beforeEach(async ({ page }) => {
   await page.goto("https://ztrain-web.vercel.app/auth/login");
   await page.getByPlaceholder("Email").click();
   await page.getByPlaceholder("Email").fill(data.email);
@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
   await page.locator("#btn_login").click();
 
   page.pause;
-});
+}); */
 test("supprimer un produit au panier", async ({ page }) => {
   await expect(page).toHaveURL("https://ztrain-web.vercel.app/home");
   await page.locator("#style_content_cart_wrapper__mqNbf").click();

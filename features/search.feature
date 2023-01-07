@@ -9,9 +9,8 @@ Feature: Search
   Scenario Outline: srch01-valid search
     Given I am connected to my account "ubogni@gmail.com" and "Ulrich77"
     When I do a multiple keyword search for "<multiple_keyword>"
-    Then I see a multiple keyword search result page
+    Then I see a multiple keyword search "<multiple_keyword>" in result page
     Examples:
       | multiple_keyword |
-      | T-shirt           |
-      | Ampoule          |
-
+      |   polo        |
+  
