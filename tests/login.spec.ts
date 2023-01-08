@@ -1,5 +1,5 @@
-// global-setup.ts
-import { test, Page } from "@playwright/test";
+
+import { Page } from "@playwright/test";
 import data from "./datas/connection_data.json";
 
 
@@ -14,16 +14,5 @@ async function login(page: Page) {
   page.pause;
 }
 
-
-  test("Login to Z-TRAIN", async ({page}) => {
-     await page.goto("https://ztrain-web.vercel.app/auth/login");
-     await page.getByPlaceholder("Email").click();
-     await page.getByPlaceholder("Email").fill(data.email);
-     await page.getByPlaceholder("Mot de passe").click();
-     await page.getByPlaceholder("Mot de passe").fill(data.mot_de_passe);
-     await page.locator("#btn_login").click();
-
-     page.pause;
-  });
 
 module.exports = login;

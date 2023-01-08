@@ -38,13 +38,8 @@ Then(
         .locator("#style_content_logo__pkvMP")
         .getByRole("heading", { name: "Z-Train" });
         await expect(locator, "should be logged in").toBeVisible({
-          timeout: 10000,
+          timeout: 5000,
         });
-/*       await expect(locator, {
-        message: "Le mot de passe ou le mail est incorrect",
-      }).toContainText(string).catch(()=>{
-        console.log("Le mot de passe ou le mail est incorrect");
-      }); */
     }
   
 );

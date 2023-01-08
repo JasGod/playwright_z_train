@@ -1,0 +1,38 @@
+{
+    "login": {
+      "email": "taki@gmail.com",
+      "mot_de_passe": "chouchou12"
+    },
+    "registration": {
+      "email": "gnna1@@@gmail.com",
+      "mot_de_passe": "Executiyyn7.",
+      "Confirmer_mot_de_passe": "Executiyyn7."
+    },
+    "produit": {
+      "quantité": "2",
+      "article": "Fauteuil Chaise Patchwork, Bois d'hévéa",
+      "produitsupp": "Chaussures",
+      "nom": "shirt",
+      "nombresupp": 5
+    },
+    "search": {
+      "input": "Chaise"
+    },
+    "ManyProduct": [
+      {
+        "quantité": "2",
+        "article": "Fauteuil Chaise Patchwork, Bois d'hévéa",
+        "nombresupp": 5
+      },
+      {
+        "quantité": "2",
+        "article": "JVC, Caque Supra-aural Pliable",
+        "nombresupp": 4
+      },
+      {
+        "quantité": "2",
+        "article": "Enceinte Bluetooth portable robuste",
+        "nombresupp": 1
+      }
+    ]
+}
