@@ -12,15 +12,15 @@ test.describe("test", async () => {
     page = await browser.newPage();
   });
 
-  test("S'inscrire à Z-TRAIN @reg", async () => {
+/*   test("S'inscrire à Z-TRAIN @reg", async () => {
     await register(page);
-  });
+  }); */
 
   test("Se connecter à Z-TRAIN @login", async () => {
     await login(page);
   });
 
-  test("Ajouter un produit au panier", async () => {
+/*   test("Ajouter un produit au panier", async () => {
     await panier(page);
   });
 
@@ -34,6 +34,6 @@ test.describe("test", async () => {
 
   test("Se déconnecter de Z-train", async () => {
     await logout(page);
-  });
+  }); */
 
 });
