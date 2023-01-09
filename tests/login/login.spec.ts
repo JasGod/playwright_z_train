@@ -5,7 +5,7 @@ import { allure } from "allure-playwright";
 
 
 async function login(page: Page) {
-  await page.goto("https://ztrain-web.vercel.app/auth/login");
+  await page.goto(data.url.page_login);
   await page.getByPlaceholder("Email").click();
   await page.getByPlaceholder("Email").fill(data.login.email);
   await page.getByPlaceholder("Mot de passe").click();

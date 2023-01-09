@@ -1,12 +1,22 @@
 {
+  "url": {
+    "page_login": "https://ztrain-web.vercel.app/auth/login",
+    "page_home": "https://ztrain-web.vercel.app/home",
+    "page_register": "https://ztrain-web.vercel.app/auth/register"
+  },
     "login": {
       "email": "taki@gmail.com",
-      "mot_de_passe": "chouchou12"
+      "mot_de_passe": "chouchou12",
+      "email_fail": "gnna@gmail.fr",
+      "pass_fail": "chouchou12",
+      "format_invalid": "Le format de l'email est invalid",
+      "email_mdp_incorrect": "Email ou mot de passe incorrect"
     },
     "registration": {
       "email": "gnna1@@@gmail.com",
       "mot_de_passe": "Executiyyn7.",
-      "Confirmer_mot_de_passe": "Executiyyn7."
+      "Confirmer_mot_de_passe": "Executiyyn7.",
+      "user_exist": "Cette utilisateur existe déjà"
     },
     "produit": {
       "quantité": "2",
@@ -16,7 +26,9 @@
       "nombresupp": 5
     },
     "search": {
-      "input": "Chaise"
+      "input": "Chaise",
+      "invalid_product": "pain",
+      "product_not_found": "Aucun produit trouvé"
     },
     "ManyProduct": [
       {
