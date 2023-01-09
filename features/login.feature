@@ -12,6 +12,6 @@ Feature: Login
     Then The user is connected with  "Z-Train"
     Examples:
       |          email      |     password    |
-      |  gnana@gmail.com    |   Ulmate10      |
+      |  taki@gmail.com    |   chouchou12      |
 
 

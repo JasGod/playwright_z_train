@@ -1,6 +1,6 @@
 
 import { Page } from "@playwright/test";
-import data from "./data_input.json";
+import data from "../data_input.json";
 import { allure } from "allure-playwright";
 
 

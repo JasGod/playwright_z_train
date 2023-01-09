@@ -1,12 +1,17 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { OurWorld } from "../setup/types";
 import { expect } from "@playwright/test";
-import product_data from "../../tests/datas/product_data.json";
+import data from "../../tests/data_input.json";
 
 
 When("I select one item", async function (this: OurWorld) {
   await expect(this.page).toHaveURL("https://ztrain-web.vercel.app/home");
-await this.page.locator(product_data.article).click();
+  let product_name = data.produit.article;
+    await this.page
+      .locator(".style_card__gNEqX", {
+        has: this.page.locator(`text=${product_name}`),
+      })
+      .click();
 await this.page
   .locator("#style_quantity_wrapper__2QMug")
   .getByRole("textbox")
@@ -19,7 +24,7 @@ When(
     await this.page
       .locator("#style_quantity_wrapper__2QMug")
       .getByRole("textbox")
-      .fill(product_data.quantité);
+      .fill(data.produit.quantité);
     await this.page.getByRole("button", { name: "Ajouter au panier" }).click();
     await this.page.locator("#style_content_cart_wrapper__mqNbf").click();
   }
@@ -30,5 +35,5 @@ await expect(this.page.getByText("Votre panier à été mis à jour")).toHaveTex
 );
 await expect(
   this.page.locator('[id="style_card_wrapper__hrc1I"]')
-).toContainText(product_data.nom);
+).toContainText(data.produit.nom);
 });

@@ -2,7 +2,7 @@ import { AllureRuntime, CucumberJSAllureFormatter } from 'allure-cucumberjs';
 function Reporter(options: any) {
   return new CucumberJSAllureFormatter(
     options,
-    new AllureRuntime({ resultsDir: './test-reports/allure-cucumber' }),
+    new AllureRuntime({ resultsDir: './reports/allure-results' }),
     {
       labels: [
         {

@@ -4,4 +4,4 @@ node_modules/
 /playwright/.cache/
 /allure-report
 /allure-results
-/test-reports
+/reports

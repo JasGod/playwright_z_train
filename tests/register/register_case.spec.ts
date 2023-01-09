@@ -1,6 +1,6 @@
 import { test, expect, Page } from "@playwright/test";
 import { allure } from "allure-playwright";
-import data  from "./data_input.json";
+import data  from "../data_input.json";
 
 test('Inscription avec email deja présent', async ({ page }) => {
   await page.goto('https://ztrain-web.vercel.app/auth/register');

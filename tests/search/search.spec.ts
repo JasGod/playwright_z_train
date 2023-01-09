@@ -1,9 +1,9 @@
 import { Page, expect } from '@playwright/test';
-import data from "./data_input.json";
+import data from "../data_input.json";
 import { allure } from "allure-playwright";
 
 async function search(page: Page) {
-  await expect(page).toHaveURL("https://ztrain-web.vercel.app/home");
+  await expect(page, "On est bien sur la page d'accueil").toHaveURL("https://ztrain-web.vercel.app/home");
   await page.getByPlaceholder("Rechecher un produit").click();
   await page
     .getByPlaceholder("Rechecher un produit")
@@ -13,7 +13,7 @@ async function search(page: Page) {
     data.search.input
   );
   await expect(
-    page.locator("[id=style_popular_product_wrapper__z6J0h]"), {message: "Le produit n'existe pas."}
+    page.locator("[id=style_popular_product_wrapper__z6J0h]"), "Le produit n'existe pas."
   ).toContainText(data.search.input);
   allure.severity("mineur");
   allure.owner("Takam Jasmin");

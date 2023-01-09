@@ -12,7 +12,11 @@ test.describe("test", async () => {
     page = await browser.newPage();
   });
 
-/*   test("S'inscrire à Z-TRAIN @reg", async () => {
+  test.afterAll(async () => {
+    await page.close();
+  });
+
+  /*   test("S'inscrire à Z-TRAIN @reg", async () => {
     await register(page);
   }); */
 
@@ -20,20 +24,25 @@ test.describe("test", async () => {
     await login(page);
   });
 
-/*   test("Ajouter un produit au panier", async () => {
+  test("Ajouter un produit au panier", async ({}, testInfo) => {
+    if (testInfo.retry) await login(page);
     await panier(page);
   });
 
-  test("rechecher un produit", async () => {
+  /*
+
+  test("rechecher un produit", async ({},testInfo) => {
+    if (testInfo.retry) await login(page);
     await search(page);
   });
   
-  test("Supprimer un produit du panier", async () => {
+  test("Supprimer un produit du panier", async ({},testInfo) => {
+    if (testInfo.retry) await login(page);
     await deleteProd(page);
   });
 
-  test("Se déconnecter de Z-train", async () => {
+  test("Se déconnecter de Z-train", async ({},testInfo) => {
+    if (testInfo.retry) await login(page);
     await logout(page);
   }); */
-
 });

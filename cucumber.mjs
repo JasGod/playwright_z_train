@@ -2,8 +2,8 @@
     requireModule: ["ts-node/register"],
     require: ["src/**/*.ts"],
     format: [
-      "json:test-reports/cucumber-report.json",
-      "html:test-reports/report.html",
+      "json:reports/cucumber-report.json",
+      "html:reports/report.html",
       "summary",
       "progress-bar",
     ],

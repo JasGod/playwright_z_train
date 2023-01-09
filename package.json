@@ -4,9 +4,9 @@
   "description": "Un programme pour faire l'automatisation du test avec playwright",
   "main": "index.js",
   "scripts": {
-    "allure:clean": "npx allure generate -c -o ./test-reports/allure-playwright",
-    "allure:reportPlaywright": "npx allure serve ./test-reports/allure-playwright",
-    "allure:reportCucumber": "npx allure serve ./test-reports/allure-cucumber",
+    "allure:clean": "npx allure generate -c -o ./allure-results",
+    "allure:reportPlaywright": "npx allure serve ./allure-results",
+    "allure:reportCucumber": "npx allure serve ./reports/allure-results",
     "test": "cucumber-js",
     "start": "npx playwright test"
   },
