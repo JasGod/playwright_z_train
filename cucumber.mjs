@@ -2,8 +2,8 @@
     requireModule: ["ts-node/register"],
     require: ["src/**/*.ts"],
     format: [
-      "json:reports/cucumber-report.json",
-      "html:reports/report.html",
+      "json:allure-results/cucumber-report.json",
+      "html:allure-results/report.html",
       "summary",
       "progress-bar",
     ],
