@@ -36,7 +36,7 @@ Before(async function (this: OurWorld) {
   
   this.context = await global.browser.newContext({
     recordVideo: {
-      dir: "results-cucumber/videos/",
+      dir: "results-cucumber/videos/test-video.webm",
       size: { width: 800, height: 600 },
     },
   });
@@ -46,11 +46,11 @@ Before(async function (this: OurWorld) {
 // Cleanup after each scenario
 After(async function (this: OurWorld, testCase:any) {
   if (testCase.result.status === Status.FAILED) {
-    let random = Math.floor(Math.random() * 20);
-    await this.context.tracing.stop({ path: `results-cucumber/traces/test-trace${random}.zip` });
     var stream = await this.page.screenshot();
     this.attach(stream, 'image/png');
   }
+  let random = Math.floor(Math.random() * 20);
+  await this.context.tracing.stop({ path: `results-cucumber/traces/test-trace${random}.zip` });
 
   await this.page.close();
   await this.context.close();
