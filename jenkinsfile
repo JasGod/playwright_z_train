@@ -10,22 +10,24 @@ pipeline {
         }
         }
         stage('test') {
-        steps {
-            bat '''
-            rmdir /s /q allure-results
-            npx playwright test chain_test
-            copy environment.xml /allure-results
-            '''
-        }
-           post {
+          steps {
+              bat '''
+              npx playwright test chain_test
+              
+              '''
+          }
+          post {
             success {
-            if (fileExists("results-cucumber")) {
-              archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
-            } else {
-              bat 'echo "No test Artifacts."'
+              script{
+                if (fileExists("results-cucumber")) {
+                  archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
+                } else {
+                  bat 'echo "No test Artifacts."'
+                }
+              }
+
             }
-            }
-        }
+          }
         }
     }
     post {
