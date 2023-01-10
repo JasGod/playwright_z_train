@@ -15,7 +15,7 @@ pipeline {
         }
            post {
             success {
-            archiveArtifacts(artifacts: 'results-cucumber/videos/*.webm', followSymlinks: true)
+            archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
             // bat 'rm -rf *.webm'
             }
         }
