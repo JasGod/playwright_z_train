@@ -19,7 +19,11 @@ pipeline {
         }
            post {
             success {
-            archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
+            if (fileExists("results-cucumber")) {
+              archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
+            } else {
+              bat 'echo "No test Artifacts."'
+            }
             }
         }
         }
