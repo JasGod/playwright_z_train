@@ -11,15 +11,17 @@ pipeline {
         }
         stage('test') {
         steps {
-            bat 'npm test'
+            bat '''
+            npm test
+            npx playwright test chain_test
+            '''
         }
            post {
             success {
             archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
             bat '''
-            
+            copy environment.xml /allure-results
             rmdir /s /q results-cucumber
-            rmdir /s /q allure-results
             '''
             }
         }
