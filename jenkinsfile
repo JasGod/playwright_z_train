@@ -17,8 +17,9 @@ pipeline {
             success {
             archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
             bat '''
-            copy environment.xml /allure-results
-            rmdir /s /q results-cucumber/
+            
+            rmdir /s /q results-cucumber
+            rmdir /s /q allure-results
             '''
             }
         }
