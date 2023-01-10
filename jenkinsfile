@@ -16,7 +16,10 @@ pipeline {
            post {
             success {
             archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
-            // bat 'rm -rf *.webm'
+            bat '''
+            copy environment.xml reports/allure-results
+            del results-cucumber/*.*
+            '''
             }
         }
         }
