@@ -47,7 +47,7 @@ Before(async function (this: OurWorld) {
 After(async function (this: OurWorld, testCase:any) {
   if (testCase.result.status === Status.FAILED) {
     let random = Math.floor(Math.random() * 20);
-    await this.context.tracing.stop({ path: `./results-cucumber/traces/test-trace${random}.zip` });
+    await this.context.tracing.stop({ path: `results-cucumber/traces/test-trace${random}.zip` });
     var stream = await this.page.screenshot();
     this.attach(stream, 'image/png');
   }
