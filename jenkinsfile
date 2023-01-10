@@ -1,43 +1,34 @@
 pipeline {
-  agent any
-  tools {
-    allure 'allure'
-  }
-  stages {
-    stage('install playwright') {
-      steps {
-        bat '''
-          npm i 
-          npx playwright install
-        '''
-      }
-    }
-/*     stage('help') {
-      steps {
-        bat 'npx playwright test --help'
-      }
-    } */
-    stage('test') {
-      steps {
-        bat 'npx playwright test chain_test'
-      }
-/*       post {
-        success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          bat 'rm -rf *.png'
+    agent any
+    stages {
+        stage('install playwright') {
+        steps {
+            bat '''
+            npm i
+            npx playwright install
+            '''
         }
-      } */
+        }
+        stage('test') {
+        steps {
+            bat 'npm test'
+        }
+           post {
+            success {
+            archiveArtifacts(artifacts: 'results-cucumber/videos/-*.webm', followSymlinks: false)
+            bat 'rm -rf *.webm'
+            }
+        }
+        }
     }
-    stage('Reports') {
-      steps {
-          allure([
-          includeProperties: false,
-          jdk: '',
-          properties: [[key: 'Browser', value: 'Chrome']],
-          reportBuildPolicy: 'ALWAYS',
-          results: [[path: 'allure-results']]
-        ])
-      }
+    post {
+        always {
+            allure([
+                includeProperties: true,
+                jdk: '',
+                properties: [[key: 'Browser', value: 'Chrome']],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']]
+            ])
+        }
     }
-  }
-}
