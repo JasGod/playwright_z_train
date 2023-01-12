@@ -36,7 +36,7 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     headless: false,
-    video: "on-first-retry",
+    video: "on",
     screenshot: "only-on-failure",
     launchOptions: {
       slowMo: 1000,
@@ -45,7 +45,7 @@ const config: PlaywrightTestConfig = {
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    trace: "on",
   },
 
   /* Configure projects for major browsers */

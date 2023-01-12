@@ -13,7 +13,6 @@ pipeline {
           steps {
               bat '''
               npx playwright test chain_test
-              
               '''
           }
           post {
