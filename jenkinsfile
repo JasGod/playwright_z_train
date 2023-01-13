@@ -17,7 +17,7 @@ pipeline {
           }
           post {
             success {
-              slackSend  message: 'Test du pipeline z-train à réussi.'
+              slackSend (color: 'good', iconEmoji: 'thumbsup' message: 'Test du pipeline z-train à réussi.')
               script{
                 if (fileExists("results-cucumber")) {
                   archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
@@ -27,7 +27,7 @@ pipeline {
               }
             }
             failure {
-              slackSend color: 'danger', iconEmoji: 'thumbsdown', message: 'Test du pipeline a échoué'
+              slackSend (color: 'danger', iconEmoji: 'thumbsdown', message: 'Test du pipeline a échoué.')
             }
           }
         }
