@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import data from "../data_input.json";
+import { allure } from "allure-playwright";
 
 test.beforeEach(async ({ page }) => {
   //connexion
@@ -32,4 +33,17 @@ test("Recherche produit failed @failed", async ({ page }) => {
   await expect(page.getByText(data.search.product_not_found)).toHaveText(
     data.search.product_not_found
   );
+           allure_param();
 });
+function allure_param() {
+  const now = new Date();
+  allure.severity("Blocker");
+  allure.owner("Takam Jasmin");
+  allure.feature("Register");
+  allure.addParameter("Date du lancement", now.toUTCString());
+
+  allure.addParameter("email", data.registration.email);
+  allure.addParameter("mot de passe", data.registration.mot_de_passe);
+  allure.description("Test d'inscription au site Z-train");
+}
+

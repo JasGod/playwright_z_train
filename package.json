@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "allure:clean": "npx allure generate -c -o ./allure-results",
-    "allure:reportPlaywright": "npx allure serve ./allure-results",
-    "allure:reportCucumber": "npx allure serve ./reports/allure-results",
+    "allure:report": "npx allure serve ./allure-results",
     "test": "cucumber-js",
-    "start": "npx playwright test"
+    "start": "npx playwright test chain_test"
   },
   "keywords": [],
   "author": "TAKAM JASMIN",

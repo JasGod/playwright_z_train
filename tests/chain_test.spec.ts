@@ -6,6 +6,8 @@ const search = require("./search/search.spec");
 const register = require("./register/register.spec");
 const deleteProd = require("./produit/produit_del.spec");
 
+// console.log(process.argv);
+
 test.describe("test", async () => {
   let page: Page;
   test.beforeAll(async ({ browser }) => {
@@ -16,7 +18,7 @@ test.describe("test", async () => {
     await page.close();
   });
 
-  /*   test("S'inscrire à Z-TRAIN @reg", async () => {
+/*     test("S'inscrire à Z-TRAIN @register", async () => {
     await register(page);
   }); */
 
@@ -24,24 +26,24 @@ test.describe("test", async () => {
     await login(page);
   });
 
-  test("Ajouter un produit au panier", async ({}, testInfo) => {
+/*   test("Ajouter un produit au panier @bag", async ({}, testInfo) => {
     if (testInfo.retry) await login(page);
     await panier(page);
   });
 
-  /*
+  
 
-  test("rechecher un produit", async ({},testInfo) => {
+  test("rechecher un produit @prod", async ({},testInfo) => {
     if (testInfo.retry) await login(page);
     await search(page);
   });
   
-  test("Supprimer un produit du panier", async ({},testInfo) => {
+  test("Supprimer un produit du panier @del", async ({},testInfo) => {
     if (testInfo.retry) await login(page);
     await deleteProd(page);
   });
 
-  test("Se déconnecter de Z-train", async ({},testInfo) => {
+  test("Se déconnecter de Z-train @logout", async ({},testInfo) => {
     if (testInfo.retry) await login(page);
     await logout(page);
   }); */

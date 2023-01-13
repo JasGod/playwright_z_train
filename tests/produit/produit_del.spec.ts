@@ -16,8 +16,11 @@ async function deleteProd(page: Page) {
   await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(
     data.produit.produitsupp
   );
-      allure.severity("Majeur");
-      allure.owner("Takam Jasmin");
+         const now = new Date();
+         allure.severity("Critical");
+         allure.owner("Takam Jasmin");
+         allure.feature("Delete one product");
+         allure.addParameter("Date du lancement", now.toUTCString());
       allure.addParameter("produit à supprimer", data.produit.produitsupp);
       allure.description("Suppression d'un produit du panier.");
 };

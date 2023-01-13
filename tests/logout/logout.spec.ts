@@ -3,8 +3,11 @@ import { allure } from "allure-playwright";
 
 
 async function logout(page: Page ) {
-  allure.severity("Majeur");
+  const now = new Date();
+  allure.severity("Critical");
   allure.owner("Takam Jasmin");
+  allure.feature("Logout");
+  allure.addParameter("Date du lancement", now.toUTCString());
   allure.description("Test de déconnexion au site Z-train");
   await page.locator("#style_avatar_wrapper__pEGIQ svg").nth(1).click();
   await page.getByRole("link", { name: "Se déconnecter" }).click();

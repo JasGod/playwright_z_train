@@ -3,7 +3,7 @@ import data from "../data_input.json";
 import { allure } from "allure-playwright";
 
 async function search(page: Page) {
-  await expect(page, "On est bien sur la page d'accueil").toHaveURL("https://ztrain-web.vercel.app/home");
+  await expect(page, "On est bien sur la page d'accueil").toHaveURL(data.url.page_home);
   await page.getByPlaceholder("Rechecher un produit").click();
   await page
     .getByPlaceholder("Rechecher un produit")
@@ -15,8 +15,11 @@ async function search(page: Page) {
   await expect(
     page.locator("[id=style_popular_product_wrapper__z6J0h]"), "Le produit n'existe pas."
   ).toContainText(data.search.input);
-  allure.severity("mineur");
+  const now = new Date();
+  allure.severity("Normal");
   allure.owner("Takam Jasmin");
+  allure.feature("Search product");
+  allure.addParameter("Date du lancement", now.toUTCString());
   allure.description("Test de recherche d'un produit sur le site Z-train");
   allure.addParameter("produit recherché", data.search.input);
 };

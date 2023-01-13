@@ -17,6 +17,7 @@ pipeline {
           }
           post {
             success {
+              slackSend color: 'good', iconEmoji: 'thumbsup' message: 'Test du pipeline z-train à réussi.'
               script{
                 if (fileExists("results-cucumber")) {
                   archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
@@ -24,20 +25,22 @@ pipeline {
                   bat 'echo "No test Artifacts."'
                 }
               }
-
+            }
+            failure {
+              slackSend color: 'danger', iconEmoji: 'thumbsdown', message: 'Test du pipeline a échoué'
             }
           }
         }
     }
     post {
-        always {
-            allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'allure-results']]
-            ])
-        }
+      always {
+        allure([
+            includeProperties: false,
+            jdk: '',
+            properties: [],
+            reportBuildPolicy: 'ALWAYS',
+            results: [[path: 'allure-results']]
+        ])
+      }
     }
 }

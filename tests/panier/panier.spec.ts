@@ -5,7 +5,7 @@ import { link, linkSync } from "fs";
 
 
 async function panier(page: Page) {
-    await expect(page, { message: "Connectez-vous d'abord." }).toHaveURL(
+    await expect(page, "Vérification si on est bien sur la page home").toHaveURL(
       "https://ztrain-web.vercel.app/home"
     );
     let product_name = data.produit.article;
@@ -36,9 +36,12 @@ async function panier(page: Page) {
     await page
       .getByRole("heading", { name: "Normal d'être impatient." })
       .click();
-
-    allure.severity("Majeur");
+    const now = new Date();
+    allure.severity("Blocker");
     allure.owner("Takam Jasmin");
+    allure.feature("Panier");
+    allure.description("Test d'ajout de produit au panier sur le site Z-train");
+    allure.addParameter("Date du lancement", now.toUTCString());
     allure.addParameter("article", data.produit.article);
     allure.addParameter("quantité", data.produit.quantité);
 }

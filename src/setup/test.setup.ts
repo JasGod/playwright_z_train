@@ -36,7 +36,7 @@ Before(async function (this: OurWorld) {
   
   this.context = await global.browser.newContext({
     recordVideo: {
-      dir: "results-cucumber/videos/test-video.webm",
+      dir: "results-cucumber/videos/",
       size: { width: 800, height: 600 },
     },
   });
