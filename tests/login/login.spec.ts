@@ -14,7 +14,7 @@ async function login(page: Page) {
 
   let mail = await page.getByPlaceholder("Email").textContent();
   let pwd = await page.getByPlaceholder("Mot de passe").textContent();
-  console.log("email: %s and password: %s", mail, pwd );
+  console.log(`mail: ${mail}, pwd: ${pwd}`);
   
 
     await expect(page.getByPlaceholder("Email")).toHaveValue(

@@ -12,14 +12,14 @@ pipeline {
         stage('test') {
           steps {
               bat '''
-              npm run allure:run
+              npm run allure:clean
               copy environment.xml ./allure-results
               npx playwright test chain_test
               '''
           }
           post {
             success {
-              slackSend (color: 'good', iconEmoji: 'thumbsup', message: 'Test du pipeline z-train à réussi. (<${env.BUILD_URL}|Open>)')
+              slackSend (color: 'good', iconEmoji: 'thumbsup', message: `Test du pipeline z-train à réussi. <${env.BUILD_URL}|Open>`)
               script{
                 if (fileExists("results-cucumber")) {
                   archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
@@ -29,7 +29,7 @@ pipeline {
               }
             }
             failure {
-              slackSend (color: 'danger', iconEmoji: 'thumbsdown', message: 'Test du pipeline a échoué. (<${env.BUILD_URL}|Open>)')
+              slackSend (color: 'danger', iconEmoji: 'thumbsdown', message: `Test du pipeline z-train à réussi. <${env.BUILD_URL}|Open>`)
             }
           }
         }
