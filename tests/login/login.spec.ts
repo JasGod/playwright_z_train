@@ -2,7 +2,7 @@
 import { Page, expect } from "@playwright/test";
 import data from "../data_input.json";
 import { allure } from "allure-playwright";
-import assert from "assert";
+
 
 
 async function login(page: Page) {
@@ -12,10 +12,6 @@ async function login(page: Page) {
   await page.getByPlaceholder("Mot de passe").click();
   await page.getByPlaceholder("Mot de passe").fill(data.login.mot_de_passe);
 
-  let mail = await page.getByPlaceholder("Email").textContent();
-  let pwd = await page.getByPlaceholder("Mot de passe").textContent();
-  console.log(`mail: ${mail}, pwd: ${pwd}`);
-  
 
     await expect(page.getByPlaceholder("Email")).toHaveValue(
       data.login.email
