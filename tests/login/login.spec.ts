@@ -14,23 +14,26 @@ async function login(page: Page) {
 
   let mail = await page.getByPlaceholder("Email").textContent();
   let pwd = await page.getByPlaceholder("Mot de passe").textContent();
+  console.log("email: %s and password: %s", mail, pwd );
+  
 
-  if (mail == data.login.email && pwd == data.login.mot_de_passe) {
-    await page.locator("#btn_login").click();
-    const now = new Date();
-    allure.severity("Blocker");
-    allure.owner("Takam Jasmin");
-    allure.feature("Login");
-    allure.description("Test de connexion au site Z-train");
-    allure.addParameter("Date du lancement", now.toUTCString());
-    allure.addParameter("Login", data.login.email);
-    allure.addParameter("Password", data.login.mot_de_passe);
-    page.pause;
-  } else {
-     assert.fail("Data don't match !");
-  }
+    await expect(page.getByPlaceholder("Email")).toHaveValue(
+      data.login.email
+    );
+    await expect(page.getByPlaceholder("Mot de passe")).toHaveValue(
+      data.login.mot_de_passe
+    );
 
-
+  await page.locator("#btn_login").click();
+  const now = new Date();
+  allure.severity("Blocker");
+  allure.owner("Takam Jasmin");
+  allure.feature("Login");
+  allure.description("Test de connexion au site Z-train");
+  allure.addParameter("Date du lancement", now.toUTCString());
+  allure.addParameter("Login", data.login.email);
+  allure.addParameter("Password", data.login.mot_de_passe);
+  page.pause;
 }
 
 
