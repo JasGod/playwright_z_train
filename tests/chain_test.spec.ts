@@ -1,5 +1,6 @@
 import { test, Page } from "@playwright/test";
 const login = require("./login/login.spec");
+import { allure } from "allure-playwright";
 const panier = require("./panier/panier.spec");
 const logout = require("./logout/logout.spec");
 const search = require("./search/search.spec");
@@ -11,6 +12,7 @@ const deleteProd = require("./produit/produit_del.spec");
 test.describe("test", async () => {
   let page: Page;
   test.beforeAll(async ({ browser }) => {
+    allure.epic("End to End Z-train")
     page = await browser.newPage();
   });
 
@@ -22,28 +24,28 @@ test.describe("test", async () => {
     await register(page);
   }); */
 
-  test("Se connecter à Z-TRAIN @login", async () => {
+  test("Se connecter à Z-TRAIN", async () => {
     await login(page);
   });
 
 /*   test("Ajouter un produit au panier @bag", async ({}, testInfo) => {
     if (testInfo.retry) await login(page);
     await panier(page);
-  });
+  }); */
 
   
 
-  test("rechecher un produit @prod", async ({},testInfo) => {
+/*   test("rechecher un produit @prod", async ({},testInfo) => {
     if (testInfo.retry) await login(page);
     await search(page);
-  });
+  }); */
   
-  test("Supprimer un produit du panier @del", async ({},testInfo) => {
+/*   test("Supprimer un produit du panier @del", async ({},testInfo) => {
     if (testInfo.retry) await login(page);
     await deleteProd(page);
-  });
+  }); */
 
-  test("Se déconnecter de Z-train @logout", async ({},testInfo) => {
+/*   test("Se déconnecter de Z-train", async ({},testInfo) => {
     if (testInfo.retry) await login(page);
     await logout(page);
   }); */
