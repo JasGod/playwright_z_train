@@ -20,6 +20,7 @@ pipeline {
           post {
             success {
               slackSend (color: 'good', iconEmoji: 'thumbsup', message: "Test du pipeline z-train a reussi. <${env.BUILD_URL}|Open>")
+              jiraComment (body: 'Commentaire envoyé depuis Jira.', issueKey: 'FC-671')
               script{
                 if (fileExists("results-cucumber")) {
                   archiveArtifacts(artifacts: 'results-cucumber/**', followSymlinks: true)
@@ -30,6 +31,7 @@ pipeline {
             }
             failure {
               slackSend (color: 'danger', iconEmoji: 'thumbsdown', message: "Test du pipeline z-train a echoue. <${env.BUILD_URL}|Open>")
+              jiraComment (body: 'Commentaire envoyé depuis Jira.', issueKey: 'FC-671')
             }
           }
         }
